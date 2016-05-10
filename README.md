@@ -32,7 +32,3 @@ The pipeline is driven by a JSON document that lists the OS Patches available fo
 
 
 
-
-
-
-
