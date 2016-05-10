@@ -1,0 +1,10 @@
+{
+  "version": "2",
+  "build_cookbook": {
+    "name": "delivery-bag",
+    "path": ".delivery/build-cookbook"
+  },
+  "delivery-bag": {
+    "data-bag-repo-path": "data_bags"
+  }
+}
