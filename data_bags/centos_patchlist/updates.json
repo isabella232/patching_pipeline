@@ -1,3 +1,10 @@
 {
-  "id": "updates"
+  "id": "updates",
+  "package": "openssh-6.6.1p1-23.el7_2",
+  "package": "openssh-clients-6.6.1p1-25.el7_2",
+  "package": "openssh-server-6.6.1p1-25.el7_2",
+  "package": "openssl-1.0.1e-51.el7_2.5",
+  "package": "openssl-libs-1.0.1e-51.el7_2.5",
+  "package": "openldap-2.4.40-9.el7_2",
+  "package": "sudo-1.8.6p7-17.el7_2"
 }
