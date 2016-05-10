@@ -16,3 +16,20 @@
 #
 
 # This recipe is intentionally left blank
+
+data_bag_path = File.join(node['delivery']['workspace']['repo'], node['delivery']['config']['delivery-bag']['data-bag-repo-path'])
+Dir.chdir(data_bag_path)
+data_bag_list = Dir.glob("*").select {|f| File.directory? f}
+
+# For each data bag in the repository test creating the data bag and items within
+data_bag_list.each do |databag|
+  # Get list of data bag items
+  data_bag_item_list = Dir.glob("#{databag}/*.json")
+
+  data_bag_item_list.each do |item|
+    execute 'Running lint checks on data bag items' do
+      command "jsonlint #{item}"
+      action :run
+    end
+  end
+end
