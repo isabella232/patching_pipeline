@@ -1,12 +1,12 @@
 {
   "id": "ENVIRONMENT",
   "package": [
-    "openssh-6.6.1p1-23.el7_2",
+    "openldap-2.4.40-9.el7_2",
+    "openssh-6.6.1p1-25.el7_2",
     "openssh-clients-6.6.1p1-25.el7_2",
     "openssh-server-6.6.1p1-25.el7_2",
     "openssl-1.0.1e-51.el7_2.5",
     "openssl-libs-1.0.1e-51.el7_2.5",
-    "openldap-2.4.40-9.el7_2",
     "sudo-1.8.6p7-17.el7_2"
   ],
   "repo_url": "http://centos.aol.com/7/updates/x86_64/Packages/"
