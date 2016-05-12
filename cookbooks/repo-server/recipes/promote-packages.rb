@@ -9,6 +9,10 @@ search("centos_patchlist", "*:*").each do |patch|
   env_id = patch["id"]
   log "env_id=#{env_id}"
   
+  if env_id == "ENVIRONMENT"
+    return
+  end
+  
   package_set = patch["package"]
   log "package_set=#{package_set}"
   
