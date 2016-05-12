@@ -19,8 +19,10 @@ search("centos_patchlist", "*:*").each do |patch|
   
   if !package_set.nil?
     package_set.each do |package|
-      srcfile = File.join("/storage/repos/updates", "#{package}.rpm")
-      dstfile = File.join(repo_dir, "#{package}.x86_64.rpm")
+    
+      filename = "#{package}.x86_64.rpm"
+      srcfile = File.join("/storage/repos/updates", filename)
+      dstfile = File.join(repo_dir, filename)
       log "srcfile=#{srcfile}"
       log "dstfile=#{dstfile}"
 
