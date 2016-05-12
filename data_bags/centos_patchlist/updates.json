@@ -1,5 +1,5 @@
 {
-  "id": "updates",
+  "id": "ENVIRONMENT",
   "package": [
     "openssh-6.6.1p1-23.el7_2",
     "openssh-clients-6.6.1p1-25.el7_2",
