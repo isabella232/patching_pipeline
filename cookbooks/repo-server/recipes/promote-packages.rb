@@ -27,7 +27,7 @@ search("centos_patchlist", "*:*").each do |patch|
       log "dstfile=#{dstfile}"
 
       remote_file "#{dstfile}" do
-        source "file://#{srcfile}}"
+        source "file://#{srcfile}"
         action :create
       end
     end
