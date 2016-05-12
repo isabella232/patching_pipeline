@@ -6,13 +6,12 @@
 
 search("centos_patchlist", "*:*").each do |patch|
 
-  env_id = patch["id"]
-  log "env_id=#{env_id}"
-  
+  env_id = patch["id"].split(/-/)[0]
+  Chef::Log.info "Environment ID: #{env_id}"
   if env_id == "ENVIRONMENT"
     return
   end
-  
+    
   package_set = patch["package"]
   log "package_set=#{package_set}"
   
@@ -31,7 +30,7 @@ search("centos_patchlist", "*:*").each do |patch|
       end
     end
 
-    Chef::Log.debug "Creating repo #{repo_dir}"
+    Chef::Log.info "Creating repo #{repo_dir}"
     execute 'create yum repo' do
       action :run
       command "createrepo '#{repo_dir}'"

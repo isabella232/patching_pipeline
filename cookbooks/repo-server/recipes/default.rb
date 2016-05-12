@@ -7,3 +7,4 @@
 include_recipe 'repo-server::hosts'
 include_recipe 'repo-server::yumrepo'
 include_recipe 'repo-server::apache'
+include_recipe 'repo-server::yumrepo'
