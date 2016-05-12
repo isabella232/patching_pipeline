@@ -12,9 +12,11 @@ search("centos_patchlist", "*:*").each do |patch|
   package_set = patch["package"]
   log "package_set=#{package_set}"
   
+  repo_dir = File.join("/storage/repos", env_id)
+  
   package_set.each do |package|
     srcfile = File.join("/storage/repos/updates", "#{package}.rpm")
-    dstfile = File.join("/storage/repos", env_id, "#{package}.rpm")
+    dstfile = File.join(repo_dir, "#{package}.rpm")
     log "srcfile=#{srcfile}"
     log "dstfile=#{dstfile}"
 
@@ -24,5 +26,10 @@ search("centos_patchlist", "*:*").each do |patch|
     end
   end
 
+  Chef::Log.debug "Creating repo #{repo_dir}"
+  execute 'create yum repo' do
+    action :run
+    command "createrepo '#{repo_dir}'"
+  end
 end
   
