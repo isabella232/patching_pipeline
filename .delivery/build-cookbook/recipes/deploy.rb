@@ -14,5 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+search_query = "role:repo_server"
 
-# This recipe is intentionally left blank
+my_nodes = delivery_chef_server_search(:node, search_query)
+
+my_nodes.map!(&:name)
+
+delivery_push_job "deploy_#{node['delivery']['change']['project']}" do
+  command 'chef-client'
+  nodes my_nodes
+end
+
+# get patches loaded into relevant path on repo on repo node (matching what the environment is)
+# deploy changes to node (whitelist the yum upgrade command or put the command in a cookbooks and add it to runlist)
+
+search_query = "chef_environment:#{delivery_environment}" \
+               "AND role:repo_target"
+
+delivery_push_job "deploy_#{node['delivery']['change']['project']}" do
+  command 'yum-update'
+  nodes my_nodes
+end

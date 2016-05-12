@@ -13,6 +13,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+data_bag_path = File.join(node['delivery']['workspace']['repo'], node['delivery']['config']['delivery-bag']['data-bag-repo-path'])
+new_data_bag = "#{data_bag_path}/#{delivery_environment}.json"
+old_data_bag = "#{data_bag_path}/updates.json"
+# pseudo-code
+# if delivered_environment = acceptance then
+# copy updates.json to acceptance.json
 
-# This recipe is intentionally left blank
+execute 'cp databag to environment' do
+  command "sed -e 's/ENVIRONMENT/#{delivery_environment}/g' #{old_data_bag} > #{new_data_bag}"
+  action :run
+end
+
+# update the data bag item for env `knife data bag from file databag_name item`
+execute 'Upload Data Bag Item to Chef Server' do
+  command "knife data bag from file --config #{delivery_knife_rb}  #{databag} #{new_data_bag}"
+  action :run
+end
