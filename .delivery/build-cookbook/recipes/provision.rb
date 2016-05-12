@@ -13,9 +13,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-data_bag_path = File.join(node['delivery']['workspace']['repo'], node['delivery']['config']['delivery-bag']['data-bag-repo-path'])
+databag='centos_patchlist'
+data_bag_path = File.join(node['delivery']['workspace']['repo'], node['delivery']['config']['delivery-bag']['data-bag-repo-path'], databag)
 new_data_bag = "#{data_bag_path}/#{delivery_environment}.json"
 old_data_bag = "#{data_bag_path}/updates.json"
+
 # pseudo-code
 # if delivered_environment = acceptance then
 # copy updates.json to acceptance.json
