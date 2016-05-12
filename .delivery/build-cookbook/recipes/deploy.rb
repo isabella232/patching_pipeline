@@ -28,8 +28,9 @@ end
 # get patches loaded into relevant path on repo on repo node (matching what the environment is)
 # deploy changes to node (whitelist the yum upgrade command or put the command in a cookbooks and add it to runlist)
 
-search_query = "chef_environment:#{delivery_environment}" \
-           'AND role:repo_target'
+search_query = "chef_environment:#{delivery_environment} AND role:repo_target"
+
+log search_query
 
 my_nodes = delivery_chef_server_search(:node, search_query)
 
