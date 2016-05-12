@@ -8,6 +8,7 @@ package 'createrepo'
 
 %w[ /storage
     /storage/repos
+    /storage/repos/updates
 	/storage/repos/acceptance
    	/storage/repos/union
     /storage/repos/rehearsal
