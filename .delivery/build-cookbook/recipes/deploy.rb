@@ -17,7 +17,6 @@
 search_query = "role:repo_server"
 
 my_nodes = delivery_chef_server_search(:node, search_query)
-
 my_nodes.map!(&:name)
 
 delivery_push_job "deploy_#{node['delivery']['change']['project']}" do
@@ -29,12 +28,11 @@ end
 # deploy changes to node (whitelist the yum upgrade command or put the command in a cookbooks and add it to runlist)
 
 search_query = "chef_environment:#{delivery_environment} AND role:repo_target"
-
-log search_query
+#log search_query
 
 my_nodes = delivery_chef_server_search(:node, search_query)
-
 my_nodes.map!(&:name)
+
 delivery_push_job "deploy_#{node['delivery']['change']['project']}_yum_update" do
   command 'yum-update'
   nodes my_nodes

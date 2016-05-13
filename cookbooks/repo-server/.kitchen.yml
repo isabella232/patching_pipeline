@@ -4,6 +4,7 @@ driver:
 
 provisioner:
   name: chef_zero
+  data_bags_path: ../../data_bags
 
 # Uncomment the following verifier to leverage Inspec instead of Busser (the
 # default verifier)
@@ -17,4 +18,5 @@ suites:
   - name: default
     run_list:
       - recipe[repo-server::default]
+      - recipe[repo-server::promote-packages]
     attributes:
