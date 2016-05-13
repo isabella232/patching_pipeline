@@ -7,14 +7,12 @@
 search("centos_patchlist", "*:*").each do |patch|
 
   env_id = patch["id"].split(/-/)[0]
-  Chef::Log.info "Environment ID: #{env_id}"
+  Chef::Log.debug "Environment ID: #{env_id}"
   if env_id == "ENVIRONMENT"
     return
   end
     
   package_set = patch["package"]
-  log "package_set=#{package_set}"
-  
   repo_dir = File.join("/storage/repos", env_id)
   
   if !package_set.nil?
@@ -23,8 +21,6 @@ search("centos_patchlist", "*:*").each do |patch|
       filename = "#{package}.x86_64.rpm"
       srcfile = File.join("/storage/repos/updates", filename)
       dstfile = File.join(repo_dir, filename)
-      log "srcfile=#{srcfile}"
-      log "dstfile=#{dstfile}"
 
       remote_file "#{dstfile}" do
         source "file://#{srcfile}"
