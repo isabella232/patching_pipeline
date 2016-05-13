@@ -4,7 +4,7 @@
     "name": "delivery-bag",
     "path": ".delivery/build-cookbook"
   },
-  "skip_phases": ["unit", quality", "security"],
+  "skip_phases": ["unit", "quality", "security"],
   "delivery-bag": {
     "data-bag-repo-path": "data_bags"
   }
