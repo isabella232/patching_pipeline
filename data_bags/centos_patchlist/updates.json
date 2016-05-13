@@ -8,6 +8,5 @@
     "openssl-1.0.1e-51.el7_2.5",
     "openssl-libs-1.0.1e-51.el7_2.5",
     "sudo-1.8.6p7-17.el7_2"
-  ],
-  "repo_url": "http://centos.aol.com/7/updates/x86_64/Packages/"
+  ]
 }
